@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>週末去邊好 · 今個週末 10/31–11/1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf6f1;
+      --bg-soft: #f3eee6;
+      --card: #ffffff;
+      --ink: #2c2a26;
+      --muted: #6b6560;
+      --faint: #9a938a;
+      --accent: #e8a87c;
+      --accent-soft: #fce8d8;
+      --mint: #7eb8a2;
+      --mint-soft: #e4f3ed;
+      --lilac: #a89bc7;
+      --lilac-soft: #efeaf8;
+      --sky: #7ba3c9;
+      --sky-soft: #e6f0f8;
+      --coral: #e07a7a;
+      --border: rgba(44, 42, 38, 0.08);
+      --shadow: 0 8px 28px rgba(44, 42, 38, 0.06);
+      --radius: 18px;
+      --max: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .bg-decor {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-decor span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+    }
+    .bg-decor .b1 {
+      width: 320px; height: 320px;
+      background: var(--accent-soft);
+      top: -80px; right: -60px;
+    }
+    .bg-decor .b2 {
+      width: 280px; height: 280px;
+      background: var(--mint-soft);
+      top: 40%; left: -100px;
+    }
+    .bg-decor .b3 {
+      width: 240px; height: 240px;
+      background: var(--lilac-soft);
+      bottom: 10%; right: -40px;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 0 -8px 28px;
+      padding: 10px 8px;
+      background: rgba(250, 246, 241, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+    nav ul {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    nav ul::-webkit-scrollbar { display: none; }
+    nav a {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    nav a:hover { background: var(--bg-soft); color: var(--ink); }
+
+    header.hero {
+      text-align: left;
+      margin-bottom: 40px;
+      padding-top: 8px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--mint-soft);
+      color: #3d6b5a;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .badge::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+    }
+    header.hero h1 {
+      font-size: clamp(1.85rem, 5vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    header.hero .sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 36em;
+    }
+    header.hero .dates {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      box-shadow: 0 2px 8px rgba(44,42,38,0.03);
+    }
+
+    section { margin-bottom: 44px; }
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .sec-head h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .sec-head .hint {
+      font-size: 13px;
+      color: var(--faint);
+      font-weight: 400;
+    }
+    .subgroup { margin-top: 22px; }
+    .subgroup:first-of-type { margin-top: 0; }
+    .subgroup h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .subgroup h3 .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot.mint { background: var(--mint); }
+    .dot.accent { background: var(--accent); }
+    .dot.lilac { background: var(--lilac); }
+    .dot.sky { background: var(--sky); }
+
+    .top-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .top-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 18px 18px 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .top-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(44, 42, 38, 0.09);
+    }
+    .num {
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .n1 { background: linear-gradient(135deg, #e8a87c, #e07a7a); }
+    .n2 { background: linear-gradient(135deg, #7eb8a2, #5a9e88); }
+    .n3 { background: linear-gradient(135deg, #a89bc7, #8b7db0); }
+    .n4 { background: linear-gradient(135deg, #7ba3c9, #5f8bb0); }
+    .n5 { background: linear-gradient(135deg, #d4a574, #c48a5a); }
+    .top-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .top-card h3 a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .top-card h3 a:hover { border-bottom-color: var(--accent); color: #c47a4a; }
+    .meta {
+      font-size: 13px;
+      color: var(--faint);
+      margin-bottom: 6px;
+    }
+    .why {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .alt-note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px dashed rgba(44,42,38,0.12);
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .alt-note strong { color: var(--ink); font-weight: 600; }
+    .alt-note a { color: var(--sky); text-decoration: none; border-bottom: 1px solid rgba(123,163,201,0.4); }
+
+    .rows {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .row {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(44,42,38,0.03);
+    }
+    .row .name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+    }
+    .row .name a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232,168,124,0.45);
+    }
+    .row .name a:hover { color: #c47a4a; border-bottom-color: var(--accent); }
+    .row .detail {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .row .intro {
+      font-size: 13px;
+      color: var(--faint);
+      margin-top: 4px;
+    }
+    .row .place { color: var(--faint); }
+    .empty-note {
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .holiday {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--lilac);
+    }
+    .holiday p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .holiday p + p { margin-top: 10px; }
+    .holiday a {
+      color: var(--sky);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(123,163,201,0.4);
+    }
+    .holiday a:hover { border-bottom-color: var(--sky); }
+
+    footer {
+      margin-top: 8px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--faint);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 20px 16px 48px; }
+      .top-card { padding: 16px 14px; gap: 12px; }
+      .num { width: 32px; height: 32px; font-size: 14px; border-radius: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-decor" aria-hidden="true">
+    <span class="b1"></span>
+    <span class="b2"></span>
+    <span class="b3"></span>
+  </div>
+
+  <div class="wrap">
+    <nav id="nav" aria-label="頁內導航">
+      <ul>
+        <li><a href="#top5">最推</a></li>
+        <li><a href="#markets">市集／戶外</a></li>
+        <li><a href="#malls">商場</a></li>
+        <li><a href="#expo">會展</a></li>
+        <li><a href="#holiday">紅日</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <div class="badge">個人週末指南</div>
+      <h1>週末去邊好</h1>
+      <p class="sub">今個週末（10/31–11/1）香港商場活動、市集同會展一覽。唔包括婚展／BB展／車展。全部連結已核實，出發前再對官方最穩。</p>
+      <div class="dates">
+        <span class="chip">今個週末 · 10/31 六 – 11/1 日</span>
+        <span class="chip">香港 · 奶油色簡約風</span>
+      </div>
+    </header>
+
+    <section id="top5">
+      <div class="sec-head">
+        <h2>最值得去嘅 5 個</h2>
+        <span class="hint">Top 5</span>
+      </div>
+      <div class="top-list">
+        <article class="top-card">
+          <div class="num n1">1</div>
+          <div>
+            <h3><a href="https://www.discoverhongkong.com/tc/events/wine-dine-festival.html" target="_blank" rel="noopener">香港美酒佳餚巡禮</a></h3>
+            <p class="meta">中環海濱＋添馬 · 10/31 1pm–1am、11/1 1pm–12am</p>
+            <p class="why">旅發局旗艦節慶，酒區＋美食＋咖啡村，人流同話題都係全城最高一檔；要門票／品味證，想食想飲優先去呢度。</p>
+          </div>
+        </article>
+        <article class="top-card">
+          <div class="num n2">2</div>
+          <div>
+            <h3><a href="https://www.kaitaksportspark.com.hk/tc/events-tickets/kai-tak-sports-park-halloween-party" target="_blank" rel="noopener">啟德「好鬼啟德」萬聖節派對</a></h3>
+            <p class="meta">啟德體育園美食海灣 · 10/31 2pm–11pm（市集至 9pm）</p>
+            <p class="why">免費入場、場地大，市集＋表演＋親子／毛孩走秀；正日 Halloween 唔想買飛最穩。注意：派對日係 10/31，11/1 冇呢場。</p>
+          </div>
+        </article>
+        <article class="top-card">
+          <div class="num n3">3</div>
+          <div>
+            <h3><a href="https://www.pmq.org.hk/event/korea-square-2026-festival-weekend/?lang=ch" target="_blank" rel="noopener">韓國廣場 2026</a></h3>
+            <p class="meta">PMQ · 10/31–11/1 11am–8pm</p>
+            <p class="why">免費韓文化市集：韓服、美食、咖啡、工作坊、舞台；中環半日，想換個氣氛唔止扮鬼。</p>
+          </div>
+        </article>
+        <article class="top-card">
+          <div class="num n4">4</div>
+          <div>
+            <h3><a href="https://www.langhamplace.com.hk/zh-hk/happenings/1003" target="_blank" rel="noopener">朗豪坊《Mars》Walk me to Mars</a></h3>
+            <p class="meta">4 樓通天廣場 · 展期至 11/1；週末有咖啡節 12–9pm</p>
+            <p class="why">Luke Jerram 7 米火星香港首展，打卡強；週末仲有「TRICK or BEANS」零重力氣泡咖啡節，旺角一站過。</p>
+          </div>
+        </article>
+        <article class="top-card">
+          <div class="num n5">5</div>
+          <div>
+            <h3><a href="https://www.thewaimall.com/tch/promotions/HalloWAI2026" target="_blank" rel="noopener">圍方 HalloWAI ×《香港鬼怪百物語》</a></h3>
+            <p class="meta">圍方 · 至 11/1；10/31 有巡遊／霹靂舞</p>
+            <p class="why">本地都市傳說場景，港味 Halloween；10/31 有角色見面會、巡遊同「狐」作非為派對，大圍一站夠晒氣氛。</p>
+          </div>
+        </article>
+      </div>
+      <p class="alt-note"><strong>想挖寶可加：</strong><a href="https://www.hkhandicraft.com/fair/detail/id/oRQg0zye" target="_blank" rel="noopener">V Mart 維園市集「舊物盛典」</a> · 維園南亭 · 12–9pm</p>
+    </section>
+
+    <section id="this-weekend">
+      <div class="sec-head">
+        <h2>今個週末完整清單</h2>
+        <span class="hint">10/31–11/1 · 已核實連結</span>
+      </div>
+
+      <div class="subgroup" id="markets">
+        <h3><span class="dot mint"></span>市集／戶外／節慶</h3>
+        <div class="rows">
+          <div class="row">
+            <div class="name"><a href="https://www.discoverhongkong.com/tc/events/wine-dine-festival.html" target="_blank" rel="noopener">香港美酒佳餚巡禮</a></div>
+            <div class="detail">10/31 1pm–1am、11/1 1pm–12am · <span class="place">中環海濱活動空間＋添馬公園</span></div>
+            <div class="intro">旅發局旗艦：國際酒區、美食、咖啡村、舞台；須門票／品味證。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.kaitaksportspark.com.hk/tc/events-tickets/kai-tak-sports-park-halloween-party" target="_blank" rel="noopener">啟德「好鬼啟德」萬聖節派對</a></div>
+            <div class="detail">10/31 2pm–11pm（市集至 9pm）· <span class="place">啟德體育園美食海灣／零售館</span></div>
+            <div class="intro">免費；Cosplay、市集、嘩鬼出巡、DJ、親子毛孩走秀。派對日唔包括 11/1。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.pmq.org.hk/event/korea-square-2026-festival-weekend/?lang=ch" target="_blank" rel="noopener">韓國廣場 2026</a></div>
+            <div class="detail">10/31–11/1 11am–8pm · <span class="place">PMQ 地面廣場＋Qube 2 樓</span></div>
+            <div class="intro">免費；韓服、美食、咖啡、K-Pop／美妝舞台；部分工作坊須預先登記。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.hkhandicraft.com/fair/detail/id/oRQg0zye" target="_blank" rel="noopener">V Mart 維園市集「舊物盛典」</a></div>
+            <div class="detail">10/31–11/1 12pm–9pm · <span class="place">維多利亞公園南亭廣場</span></div>
+            <div class="intro">保良局主辦；舊物／古著、文創手作、美食攤位。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.goparksaisha.hk/tc/happening-event/soho-market-market/" target="_blank" rel="noopener">SOHO MARKET 萬聖節市集</a></div>
+            <div class="detail">10/31–11/1 12pm–8pm · <span class="place">西沙 GO PARK 中央廣場</span></div>
+            <div class="intro">萬聖節／親子／寵物主題手作同美食市集。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.visitdiscoverybay.com/tc/whats-hot-event/181" target="_blank" rel="noopener">「盞鬼」愉景灣 · 萬聖夜市集</a></div>
+            <div class="detail">10/31 2–9pm（夜市）；11/1 11am–6pm（市集）· <span class="place">愉景廣場／愉景北商場</span></div>
+            <div class="intro">10/31 有 Cosplay 巡遊爭霸戰、萌寵活動；打卡位亮燈至 11/1。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.icho.hk/tc/web/icho/hk_muse_fest_2026_carnival.html" target="_blank" rel="noopener">繽FUN博物館嘉年華（Muse Fest）</a></div>
+            <div class="detail">10/31–11/1 11am–6pm · <span class="place">尖沙咀文化中心露天廣場</span></div>
+            <div class="intro">免費；工作坊、表演、紮作貔貅；11/1 有舞貔貅表演。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.halloweenincentral.com/" target="_blank" rel="noopener">置地《萬聖狂歡祭．中環》</a></div>
+            <div class="detail">裝置至 10/31；正日遮打道派對 · <span class="place">皇后像廣場花園＋遮打道</span></div>
+            <div class="intro">免費打卡裝置；10/31 街頭狂歡（彈跳城堡等，部分另收費／預約）。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subgroup" id="malls">
+        <h3><span class="dot accent"></span>商場活動／特別推廣</h3>
+        <div class="rows">
+          <div class="row">
+            <div class="name"><a href="https://www.harbourcity.com.hk/tc/article/halloween-wicked-academy-harbour-city/" target="_blank" rel="noopener">海港城「巫」奇不有學院</a></div>
+            <div class="detail">至 11/1 逢五至日 12–8pm；討糖 10/31 · <span class="place">海運大廈地下中庭</span></div>
+            <div class="intro">親子魔法特訓；10/31 可喺指定童裝／玩具店討糖（須 HARBOUR CITYZEN）。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.langhamplace.com.hk/zh-hk/happenings/1003" target="_blank" rel="noopener">朗豪坊《Mars》Walk me to Mars</a></div>
+            <div class="detail">展期至 11/1 · <span class="place">4 樓通天廣場</span></div>
+            <div class="intro">Luke Jerram 7 米火星裝置；週末另有 <a href="https://www.langhamplace.com.hk/zh-hk/happenings/1006" target="_blank" rel="noopener">TRICK or BEANS 咖啡節</a>（12–9pm）。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.thewaimall.com/tch/promotions/HalloWAI2026" target="_blank" rel="noopener">圍方 HalloWAI ×《香港鬼怪百物語》</a></div>
+            <div class="detail">至 11/1；10/31 見面會／巡遊／霹靂舞 · <span class="place">圍方</span></div>
+            <div class="intro">五大都市傳說打卡場景；港鐵商場萬聖節聯動之一。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.thesouthside.com.hk/tch/promotions/mtrmallshalloween26" target="_blank" rel="noopener">THE SOUTHSIDE「玩懼節」· Asian Wave 萬聖夜</a></div>
+            <div class="detail">裝置至 11/1；10/31 7–10pm 派對 · <span class="place">THE SOUTHSIDE LG</span></div>
+            <div class="intro">免費入場；DJ 派對，可用 MTR Mobile 積分換飲品小食。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.thelohasmall.com/tch/promotions/mtrmallshalloween26" target="_blank" rel="noopener">青衣城／PopCorn／The LOHAS「港鐵商場 Halloween」</a></div>
+            <div class="detail">多數至 11/1；10/31 有無人機／巡遊／DJ 等 · <span class="place">青衣城、PopCorn、康城</span></div>
+            <div class="intro">青衣城 UFO 無人機（10/31 3pm／4pm）；LOHAS「喪」玩基地；PopCorn「喪」跳派對。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.park-central.com.hk/en/shk_promotion/202610octoberhalloween_en/" target="_blank" rel="noopener">將軍澳中心 Ghost Hunt</a></div>
+            <div class="detail">10/30–11/1；10/31 有舞蹈派對／巡遊 · <span class="place">將軍澳中心</span></div>
+            <div class="intro">討糖、寵物影相、Halloween Dance Party、Kiztopia 巡遊（部分須 The Point）。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.eastpointcity.com.hk/shk_promotion/epchappyhalloween2026/" target="_blank" rel="noopener">東港城萬聖節派對巡禮</a></div>
+            <div class="detail">10/31 巡遊／彩繪；11/1 Busking／雜技／彩繪 · <span class="place">東港城</span></div>
+            <div class="intro">嘩鬼巡遊、面部彩繪、街頭表演。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.tmtp.com.hk/en/Promotion/452" target="_blank" rel="noopener">屯門市廣場 Halloween Trick or Treat Party</a></div>
+            <div class="detail">10/31 7–10pm · <span class="place">tmtplaza 4 樓露天區</span></div>
+            <div class="intro">討糖、面部彩繪、鬼怪巡遊；商戶派糖。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.tsuenwanplaza.com.hk/tc/happening/%E3%80%90%E8%8D%83%E7%81%A3%E5%BB%A3%E5%A0%B4-happy-halloween%EF%BD%9C31-10-1-11-l1%E4%B8%AD%E5%BA%AD%EF%BD%9Ctrick-or-treat-%E4%BB%BB%E5%8B%99%E6%8F%9B-hk10-grab-go-%E7%BE%8E%E9%A3%9F/" target="_blank" rel="noopener">荃灣廣場 Happy Halloween</a></div>
+            <div class="detail">10/31–11/1 · <span class="place">L1 中庭</span></div>
+            <div class="intro">Trick or Treat 任務換美食券；手作工作坊、兒童餐換氣球。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.lifekcc.com/shk_promotion/lifekcc-beat-vibeday-night-%e5%a4%96%e6%98%9f%e5%98%a9%e9%ac%bc%e8%90%ac%e8%81%96%e5%a4%9c/" target="_blank" rel="noopener">life@KCC 外星嘩鬼萬聖夜</a></div>
+            <div class="detail">10/31–11/1 市集 2–5:30pm；10/31 巡遊 2:30–4:30pm · <span class="place">life@KCC</span></div>
+            <div class="intro">嘩鬼市集、外星巡遊；消費可換魔杖。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.elementshk.com/tch/elementsclub/whats_new/halloween2026" target="_blank" rel="noopener">ELEMENTS 圓方「糖心萬聖樂園」</a></div>
+            <div class="detail">裝置至 10/31 11am–9pm；彩繪 10/30–31 4–8pm · <span class="place">演薈廣場</span></div>
+            <div class="intro">加大版糖果裝置、夾糖／南瓜燈（會員消費）；注意：官方寫至 10/31，11/1 未確認延續。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.yohomall.hk/zh-hk/events/3107/%E5%98%A9%E9%AC%BC%E7%8B%82%E6%AD%A1%E7%A5%AD" target="_blank" rel="noopener">YOHO MALL「嘩鬼狂歡祭」</a></div>
+            <div class="detail">至 10/31；正日有嘩鬼巡遊（約 6pm／9pm）· <span class="place">YOHO MALL</span></div>
+            <div class="intro">南瓜車尋寶、Trick or Treat、彩繪；官方活動至 10/31。</div>
+          </div>
+          <div class="row">
+            <div class="name"><a href="https://www.moko.com.hk/promotions/halloween-party/" target="_blank" rel="noopener">MOKO「嘩鬼旺聚萬聖夜祭」</a></div>
+            <div class="detail">至 10/31；正日有午夜派對（須換票）· <span class="place">MOKO 新世紀廣場</span></div>
+            <div class="intro">搞鬼好物祭、尋寶、紋身工房；10/31 深夜派對名額有限。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subgroup" id="expo">
+        <h3><span class="dot lilac"></span>會展</h3>
+        <p class="empty-note">10/31–11/1 香港會展未見適合一般休閒嘅公眾消費展（同期多為專業／醫學會議）。已排除婚展／BB展／車展。</p>
+      </div>
+    </section>
+
+    <section id="holiday">
+      <div class="sec-head">
+        <h2>紅日</h2>
+        <span class="hint">公眾假期</span>
+      </div>
+      <div class="holiday">
+        <p>由而家到約 11/8，除星期日外<strong>冇額外紅日／公眾假期</strong>。下一個係 <strong>12/25 聖誕節</strong>。</p>
+        <p>呢週末唔使另開「紅日好去處」，專心星期六日就得。</p>
+        <p style="font-size:13px;margin-top:14px;color:var(--faint);">來源：<a href="https://www.gov.hk/en/about/abouthk/holiday/2026.htm" target="_blank" rel="noopener">GovHK 2026 公眾假期</a></p>
+      </div>
+    </section>
+
+    <footer>
+      時間／表演可能改動，出發前請再對官方網站。<br />
+      更新於 2026-10-26（香港時間）· 只涵蓋今個週末 10/31–11/1
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      if (!nav) return;
+      var onScroll = function () {
+        nav.classList.toggle("scrolled", window.scrollY > 8);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
